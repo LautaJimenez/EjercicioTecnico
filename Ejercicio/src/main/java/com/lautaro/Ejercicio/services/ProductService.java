@@ -30,7 +30,12 @@ public class ProductService {
     }
 
     public String updateProductById(Long id, Product request){
-        repository.save(request);
+        Product getProduct = repository.findById(id).orElse(null);
+        getProduct.setname(request.getname());
+        getProduct.setdescription(request.getdescription());
+        getProduct.setprice(request.getprice());
+        getProduct.setquantity(request.getquantity());
+        repository.save(getProduct);
         return "Producto actualizado exitosamente.";
     }
 

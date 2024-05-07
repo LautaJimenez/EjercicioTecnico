@@ -5,12 +5,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lautaro.Ejercicio.services.ProductService;
 import com.lautaro.Ejercicio.models.Product;
+import com.lautaro.Ejercicio.repositories.ProductRepository;
 
 @RestController
 @RequestMapping("productos")
@@ -39,7 +41,7 @@ public class ProductController {
         return service.getProductOrderByPrice();
     }
 
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public String updateProductById(@PathVariable Long id, @RequestBody Product ProductRequest){
         return service.updateProductById(id,ProductRequest);
     }
